@@ -33,3 +33,5 @@ Icon?
 ehthumbs.db
 [Tt]humbs.db
 [Dd]esktop.ini
+
+git config --global core.quotepath false
