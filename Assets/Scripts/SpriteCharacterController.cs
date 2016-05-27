@@ -15,20 +15,8 @@ public class SpriteCharacterController : MonoBehaviour {
 
 	void FixedUpdate () {
 
-
 		MoveForward (); // Player Movement 
-		
-		float move = Input.GetAxis ("Vertical");
 
-		//GetComponent<Rigidbody2D>().velocity = new Vector2 (move * maxSpeed, GetComponent<Rigidbody2D>().velocity.x);
-
-		//checks if moving and flips the sprite
-		/*
-		if (move > 0 && !facingForward)
-			flip ();
-		else if (move < 0 && facingForward)
-			flip ();
-			*/
 	}
 
 	void flip()//flipping the sprite and animation backwards
