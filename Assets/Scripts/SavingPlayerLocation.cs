@@ -2,15 +2,17 @@
 using System.Collections;
 
 public class SavingPlayerLocation : MonoBehaviour {
-
 	public Transform target;
-	private Transform playerLocation;
-	bool _hasBegun = false;
+	public Vector3 playerCurrentLocation;
+	public Vector3 savedPlayerPosition;
 
-	void Start () {
-		if (_hasBegun) {
-			playerLocation.transform.position = new Vector3(0, 0, 0);
-		}
+	void Awake() {
+		DontDestroyOnLoad(transform.gameObject);
+	}
+
+	void Update () {
+		playerCurrentLocation.x = target.position.x;
+		playerCurrentLocation.y = target.position.y;
 	}
 	// Update is called once per frame
 
@@ -18,11 +20,13 @@ public class SavingPlayerLocation : MonoBehaviour {
 		GUI.Box (new Rect (10, 10, 100, 90), "Location Manager");
 
 		if(GUI.Button(new Rect(20,40,80,20), "Save Location")) {
-			playerLocation.position = new Vector3();
+			savedPlayerPosition.x = playerCurrentLocation.x;
+			savedPlayerPosition.y = playerCurrentLocation.y;
+
 		}
 
 		if(GUI.Button(new Rect(20,70,80,20), "Load Location")) {
-			target.position = playerLocation.transform.position;
+			target.position = new Vector3 (savedPlayerPosition.x, savedPlayerPosition.y, 0);
 		}
 	}
 }
