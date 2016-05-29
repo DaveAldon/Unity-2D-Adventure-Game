@@ -7,13 +7,13 @@ using System.IO;
 public class GlobalController : MonoBehaviour {
 
 	public static GlobalController Instance;
-	public GameObject player;
 
 	public PlayerStatistics savedPlayerData = new PlayerStatistics();
 	public PlayerStatistics LocalCopyOfData;
 
 	public bool IsSceneBeingLoaded = false;
 
+	public GameObject player;
 	public int SceneID;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
@@ -28,16 +28,14 @@ public class GlobalController : MonoBehaviour {
 		saveFile.Close();
 	}
 
-	public void Load()
-	{
+	public void Load() {
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream saveFile = File.Open(Application.persistentDataPath + "Saves/save.gd", FileMode.Open);
 		LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(saveFile);
 		saveFile.Close();
 	}
 
-	void Awake () //This singleton keeps the object this script is attached to from being destroyed when switching scenes
-	{
+	void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes
 		if (Instance == null)
 		{
 			DontDestroyOnLoad(gameObject);

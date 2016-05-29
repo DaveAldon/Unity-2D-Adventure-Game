@@ -8,24 +8,8 @@ public class SpriteCharacterController : MonoBehaviour {
 	bool facingForward = true;
 	public float playerSpeed = 10f;
 
-	// Use this for initialization
-	/*void Start () {
-		if (GlobalController.Instance.IsSceneBeingLoaded) {
-			PlayerState.Instance.localPlayerData = GlobalController.Instance.LocalCopyOfData;
-
-			transform.position = new Vector3(
-				GlobalController.Instance.LocalCopyOfData.PositionX,
-				GlobalController.Instance.LocalCopyOfData.PositionY,
-				GlobalController.Instance.LocalCopyOfData.PositionZ);
-
-			GlobalController.Instance.IsSceneBeingLoaded = false;
-		}
-	}*/
-
 	void FixedUpdate () {
-
-		MoveForward (); // Player Movement 
-
+		MoveForward (); // Player Movement
 	}
 
 	void flip()//flipping the sprite and animation backwards
@@ -38,7 +22,6 @@ public class SpriteCharacterController : MonoBehaviour {
 
 	void MoveForward()
 	{
-
 		if (Input.GetKey ("up")) {//Press up arrow key to move forward on the Y AXIS
 			transform.Translate (0, playerSpeed * Time.deltaTime, 0);
 		}
@@ -57,16 +40,13 @@ public class SpriteCharacterController : MonoBehaviour {
 			PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
 			PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
 			PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
-
 			GlobalController.Instance.Save();
 		}
 
 		if (Input.GetKey (KeyCode.S)) {
 			GlobalController.Instance.Load ();
 			GlobalController.Instance.IsSceneBeingLoaded = true;
-
 			int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
-
 			SceneManager.LoadScene (whatScene);
 		}
 	}
