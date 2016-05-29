@@ -10,7 +10,7 @@ public class SavingPlayerLocation : MonoBehaviour {
 	public Transform target;
 	public Vector3 playerCurrentLocation;
 	public static Vector3 savedPlayerPosition;
-	public static List<playerLocation> savedLocations = new List<playerLocation>();
+	public static List<Game> savedLocations = new List<Game>();
 
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
@@ -29,35 +29,10 @@ public class SavingPlayerLocation : MonoBehaviour {
 			UpdateLocation ();
 			savedPlayerPosition.x = playerCurrentLocation.x;
 			savedPlayerPosition.y = playerCurrentLocation.y;
-			SaveLocationToBinary ();
-
 		}
 
 		if(GUI.Button(new Rect(20,70,80,20), "Load Location")) {
 			target.position = new Vector3 (savedPlayerPosition.x, savedPlayerPosition.y, 0);
 		}
 	}
-		
-	public void SaveLocationToBinary() {
-		UpdateLocation ();
-		savedLocations.Add(playerLocation.locPosition); //adds current game session to the list of "savedGames"
-		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create (Application.persistentDataPath + "/savedGames.gd"); //creates custom file with our own extension "gd"
-		bf.Serialize(file, SaveLoad.savedGames);
-		file.Close();
-		Debug.Log (savedLocations);
-
-		//note that Application.persistentDataPath is the default path location of save files for Unity3d. Calling on this allows this code to be multiplatform without worrying about special paths
-	}
 }
-
-public class playerLocation {
-	public float locX, locY, locZ;
-
-	public playerLocation() {
-		locX = SavingPlayerLocation.savedPlayerPosition.x;
-		locY = SavingPlayerLocation.savedPlayerPosition.y;
-		locZ = SavingPlayerLocation.savedPlayerPosition.z;
-		locPosition = new Vector3 (locX, locY, locZ);
-	}
-} 
