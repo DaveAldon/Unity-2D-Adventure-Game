@@ -21,6 +21,12 @@ public class MainMenuManager : MonoBehaviour {
 	private List<string> fileNames; //List that will store the game saves
 	public bool loadListLock = false;
 
+	private int newGameStartScene = 1;
+	private string newPlayerName = "";
+	private float newGameStartPosX = 0;
+	private float newGameStartPosY = 0;
+	private float newGameStartPosZ = 0;
+
 	void OnGUI () {
 		GUILayout.BeginArea(new Rect(0,0,Screen.width, Screen.height));
 		GUILayout.BeginHorizontal();
@@ -51,11 +57,12 @@ public class MainMenuManager : MonoBehaviour {
 			GUILayout.Box("Name Your Traveller");
 			GUILayout.Space(10);
 			GUILayout.Label("Name");
-			GlobalController.Instance.characterName = GUILayout.TextField(GlobalController.Instance.characterName, 20);
+			//GlobalController.Instance.characterName = GUILayout.TextField(GlobalController.Instance.characterName, 20);
+			newPlayerName = GUILayout.TextField(newPlayerName, 20);
 
 			if(GUILayout.Button("Save")) {
-				GlobalController.Instance.Save();
-				UnityEngine.SceneManagement.SceneManager.LoadScene("1"); //Load Scene 1
+				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ);
+				//UnityEngine.SceneManagement.SceneManager.LoadScene("1"); //Load Scene 1
 			}
 
 			GUILayout.Space(10);

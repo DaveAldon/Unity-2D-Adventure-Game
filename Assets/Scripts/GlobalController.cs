@@ -19,13 +19,32 @@ public class GlobalController : MonoBehaviour {
 	public float HP;
 	public string characterName;
 
-	private int saveNumber = 1; //Used to make saveFileName unique later during calculation
+	private int saveNumber = 1; //Used to make saveFileName unique later during calculation via incrementing
 	private string saveFileName = ""; //saveFileName must be initialized without saveNumber before the two can be used together in a calculation
 
 	public void Save() { //note that Application.persistentDataPath is the default path location of save files for Unity3d. Calling on this allows this code to be multiplatform without worrying about special paths
 		if (!Directory.Exists(Application.persistentDataPath + "/Saves")) {
 			Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
 		}
+		saveFileName = "save_" + saveNumber + ".gd";
+		BinaryFormatter formatter = new BinaryFormatter();
+		FileStream saveFile = File.Create(Application.persistentDataPath + "/Saves/" + saveFileName);
+		LocalCopyOfData = PlayerState.Instance.localPlayerData;
+		formatter.Serialize(saveFile, LocalCopyOfData);
+		saveFile.Close();
+		saveNumber++;
+	}
+
+	public void NewSave(int sceneid, string name, float X, float Y, float Z) {
+
+		GameObject prefab = Resources.Load<GameObject> ("Prefabs/Character");
+		Instantiate (prefab, new Vector3 (X, Y, Z), Quaternion.identity);
+
+		PlayerState.Instance.localPlayerData.SceneID = sceneid;
+		PlayerState.Instance.localPlayerData.characterName = name;
+		PlayerState.Instance.localPlayerData.PositionX = X;
+		PlayerState.Instance.localPlayerData.PositionY = Y;
+		PlayerState.Instance.localPlayerData.PositionZ = Z;
 
 		saveFileName = "save_" + saveNumber + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
@@ -46,13 +65,11 @@ public class GlobalController : MonoBehaviour {
 	}
 
 	void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes
-		if (Instance == null)
-		{
+		if (Instance == null) {
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
 		}
-		else if (Instance != this)
-		{
+		else if (Instance != this) {
 			Destroy (gameObject);
 		}
 	}
