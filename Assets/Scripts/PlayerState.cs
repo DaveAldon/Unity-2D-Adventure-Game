@@ -8,6 +8,7 @@ public class PlayerState : MonoBehaviour {
 	public Transform playerPosition;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
+	public string characterName;
 
 	public PlayerStatistics localPlayerData = new PlayerStatistics();
 

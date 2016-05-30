@@ -8,4 +8,5 @@ public class PlayerStatistics {
 	public int SceneID;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
+	public string characterName;
 }

@@ -4,9 +4,9 @@ using System.Collections;
 [System.Serializable] 
 public class Character {
 
-	public string name;
+	public string characterName;
 
 	public Character () {
-		this.name = "";
+		this.characterName = "";
 	}
 }

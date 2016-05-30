@@ -176,7 +176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &285452764
 MonoBehaviour:
@@ -190,6 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentMenu: 0
+  directoryPath: 
+  loadListLock: 0
 --- !u!1001 &1692030967
 Prefab:
   m_ObjectHideFlags: 0
@@ -227,12 +229,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012755554432, guid: c90b91080b85ff54c87f05229bc764d6, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000011414507236, guid: c90b91080b85ff54c87f05229bc764d6,
         type: 2}
       propertyPath: poop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011414507236, guid: c90b91080b85ff54c87f05229bc764d6,
+        type: 2}
+      propertyPath: player
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c90b91080b85ff54c87f05229bc764d6, type: 2}
