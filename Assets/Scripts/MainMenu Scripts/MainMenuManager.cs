@@ -60,7 +60,22 @@ public class MainMenuManager : MonoBehaviour {
 			newPlayerName = GUILayout.TextField(newPlayerName, 20);
 
 			if(GUILayout.Button("Save")) {
-				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ);
+				if(GUILayout.Button("1")) {
+					GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 1);
+					GlobalController.Instance.globalsActiveSave.save = 3;
+					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+				}
+				if(GUILayout.Button("2")) {
+					GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 2);
+					GlobalController.Instance.globalsActiveSave.save = 3;
+					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+				}
+				if(GUILayout.Button("3")) {
+					GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 3);
+					GlobalController.Instance.globalsActiveSave.save = 3;
+					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+				}
+				//GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ);
 			}
 
 			GUILayout.Space(10);

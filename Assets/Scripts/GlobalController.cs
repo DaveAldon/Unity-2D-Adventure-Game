@@ -34,7 +34,7 @@ public class GlobalController : MonoBehaviour {
 		whatSaveFileIsActive = slot;
 	}
 
-	public void NewSave(int sceneid, string name, float X, float Y, float Z) {
+	public void NewSave(int sceneid, string name, float X, float Y, float Z, int save) {
 
 		GameObject prefab = Resources.Load<GameObject> ("Prefabs/Character");
 		Instantiate (prefab, new Vector3 (X, Y, Z), Quaternion.identity);
@@ -45,7 +45,7 @@ public class GlobalController : MonoBehaviour {
 		PlayerState.Instance.localPlayerData.PositionY = Y;
 		PlayerState.Instance.localPlayerData.PositionZ = Z;
 
-		saveFileName = "save_" + "1" + ".gd";
+		saveFileName = "save_" + save + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream saveFile = File.Create(Application.persistentDataPath + "/Saves/" + saveFileName);
 		LocalCopyOfData = PlayerState.Instance.localPlayerData;
