@@ -49,14 +49,6 @@ public class SpriteCharacterController : MonoBehaviour {
 		if (Input.GetKey ("left")) {
 			transform.Translate (-playerSpeed * Time.deltaTime, 0, 0);
 		}
-	
-		if (Input.GetKeyUp (KeyCode.A)) {
-			//saveGame();
-		}
-
-		if (Input.GetKeyUp (KeyCode.S)) {
-			//loadGame();
-		}
 	}
 
 	public void loadGame(int slot) {

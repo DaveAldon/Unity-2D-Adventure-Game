@@ -57,12 +57,10 @@ public class MainMenuManager : MonoBehaviour {
 			GUILayout.Box("Name Your Traveller");
 			GUILayout.Space(10);
 			GUILayout.Label("Name");
-			//GlobalController.Instance.characterName = GUILayout.TextField(GlobalController.Instance.characterName, 20);
 			newPlayerName = GUILayout.TextField(newPlayerName, 20);
 
 			if(GUILayout.Button("Save")) {
 				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ);
-				//UnityEngine.SceneManagement.SceneManager.LoadScene("1"); //Load Scene 1
 			}
 
 			GUILayout.Space(10);

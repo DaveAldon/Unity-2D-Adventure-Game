@@ -7,19 +7,15 @@ using System.IO;
 public class GlobalController : MonoBehaviour {
 
 	public static GlobalController Instance;
-
 	public PlayerStatistics savedPlayerData = new PlayerStatistics();
 	public PlayerStatistics LocalCopyOfData;
 
 	public bool IsSceneBeingLoaded = false;
 
-	//public GameObject player;
 	public int SceneID;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
-
-	//private int saveNumber = 1; //Used to make saveFileName unique later during calculation via incrementing
 	private string saveFileName = ""; //saveFileName must be initialized without saveNumber before the two can be used together in a calculation
 
 	public void Save(int slot) { //note that Application.persistentDataPath is the default path location of save files for Unity3d. Calling on this allows this code to be multiplatform without worrying about special paths
@@ -51,7 +47,6 @@ public class GlobalController : MonoBehaviour {
 		LocalCopyOfData = PlayerState.Instance.localPlayerData;
 		formatter.Serialize(saveFile, LocalCopyOfData);
 		saveFile.Close();
-		//saveNumber++;
 	}
 
 	public void Load(string saveName) {
