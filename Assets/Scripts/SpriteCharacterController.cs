@@ -69,22 +69,28 @@ public class SpriteCharacterController : MonoBehaviour {
 	void OnGUI() {
 		if(GUILayout.Button("Save 1")) {
 			saveGame(1);
+			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
 		if(GUILayout.Button("Save 2")) {
 			saveGame(2);
+			GlobalController.Instance.globalsActiveSave.save = 2;
 		}
 		if(GUILayout.Button("Save 3")) {
 			saveGame(3);
+			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
 
 		if(GUILayout.Button("Load 1")) {
 			loadGame(1);
+			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
 		if(GUILayout.Button("Load 2")) {
 			loadGame(2);
+			GlobalController.Instance.globalsActiveSave.save = 2;
 		}
 		if(GUILayout.Button("Load 3")) {
 			loadGame(3);
+			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
 	}
 }

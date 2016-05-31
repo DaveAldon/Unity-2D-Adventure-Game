@@ -9,9 +9,11 @@ public class GlobalController : MonoBehaviour {
 	public static GlobalController Instance;
 	public PlayerStatistics savedPlayerData = new PlayerStatistics();
 	public PlayerStatistics LocalCopyOfData;
+	public ActiveSave globalsActiveSave = new ActiveSave();
 
 	public bool IsSceneBeingLoaded = false;
 
+	public int whatSaveFileIsActive;
 	public int SceneID;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
@@ -28,6 +30,8 @@ public class GlobalController : MonoBehaviour {
 		LocalCopyOfData = PlayerState.Instance.localPlayerData;
 		formatter.Serialize(saveFile, LocalCopyOfData);
 		saveFile.Close();
+		globalsActiveSave.save = slot;
+		whatSaveFileIsActive = slot;
 	}
 
 	public void NewSave(int sceneid, string name, float X, float Y, float Z) {
