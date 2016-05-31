@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic; 
 
 public class SmoothCamera2D : MonoBehaviour {
 
+	public static SmoothCamera2D Instance;
 	public float dampTime = 0.15f; //controls how long we want the camera to take before following the target
 	private Vector3 velocity = Vector3.zero;
 	public Transform target;
@@ -17,6 +19,5 @@ public class SmoothCamera2D : MonoBehaviour {
 			Vector3 destination = transform.position + delta;
 			transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
 		}
-
 	}
 }

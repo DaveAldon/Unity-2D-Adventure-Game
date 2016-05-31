@@ -18,7 +18,7 @@ public class PlayerState : MonoBehaviour {
 		if (Instance != this)
 			Destroy (gameObject);
 			
-		GlobalController.Instance.player = gameObject;
+		//GlobalController.Instance.player = gameObject;
 	}
 
 	void Start () {   

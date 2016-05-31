@@ -23,21 +23,6 @@ public class SpriteCharacterController : MonoBehaviour {
 		}
 	}
 
-	/*
-	void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes
-		if (Instance == null)
-		{
-			DontDestroyOnLoad(gameObject);
-			Instance = this;
-		}
-		else if (Instance != this)
-		{
-			Destroy (gameObject);
-		}
-	}
-
-*/
-
 	void FixedUpdate () {
 		MoveForward (); // Player Movement
 	}
@@ -66,26 +51,48 @@ public class SpriteCharacterController : MonoBehaviour {
 		}
 	
 		if (Input.GetKeyUp (KeyCode.A)) {
-			saveGame();
+			//saveGame();
 		}
 
 		if (Input.GetKeyUp (KeyCode.S)) {
-			loadGame();
+			//loadGame();
 		}
 	}
 
-	public void loadGame() {
-		GlobalController.Instance.Load(Application.persistentDataPath + "/Saves/save_1.gd");
+	public void loadGame(int slot) {
+		GlobalController.Instance.Load(Application.persistentDataPath + "/Saves/save_" + slot + ".gd");
 		GlobalController.Instance.IsSceneBeingLoaded = true;
 		int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
 		SceneManager.LoadScene (whatScene);
 	}
 
-	public void saveGame() {
+	public void saveGame(int slot) {
 		PlayerState.Instance.localPlayerData.SceneID = Application.loadedLevel;
 		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
 		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
 		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
-		GlobalController.Instance.Save();
+		GlobalController.Instance.Save(slot);
+	}
+
+	void OnGUI() {
+		if(GUILayout.Button("Save 1")) {
+			saveGame(1);
+		}
+		if(GUILayout.Button("Save 2")) {
+			saveGame(2);
+		}
+		if(GUILayout.Button("Save 3")) {
+			saveGame(3);
+		}
+
+		if(GUILayout.Button("Load 1")) {
+			loadGame(1);
+		}
+		if(GUILayout.Button("Load 2")) {
+			loadGame(2);
+		}
+		if(GUILayout.Button("Load 3")) {
+			loadGame(3);
+		}
 	}
 }
