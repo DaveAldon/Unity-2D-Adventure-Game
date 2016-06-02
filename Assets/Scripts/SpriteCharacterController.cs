@@ -51,8 +51,8 @@ public class SpriteCharacterController : MonoBehaviour {
 		}
 	}
 
-	public void loadGame(int slot) {
-		GlobalController.Instance.Load(Application.persistentDataPath + "/Saves/save_" + slot + ".gd");
+	public void loadGame(string slot) {
+		GlobalController.Instance.Load(slot);
 		GlobalController.Instance.IsSceneBeingLoaded = true;
 		int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
 		SceneManager.LoadScene (whatScene);
@@ -81,15 +81,15 @@ public class SpriteCharacterController : MonoBehaviour {
 		}
 
 		if(GUILayout.Button("Load 1")) {
-			loadGame(1);
+			loadGame("1");
 			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
 		if(GUILayout.Button("Load 2")) {
-			loadGame(2);
+			loadGame("2");
 			GlobalController.Instance.globalsActiveSave.save = 2;
 		}
 		if(GUILayout.Button("Load 3")) {
-			loadGame(3);
+			loadGame("3");
 			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
 	}

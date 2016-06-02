@@ -13,12 +13,16 @@ public class GlobalController : MonoBehaviour {
 
 	public bool IsSceneBeingLoaded = false;
 
-	public int whatSaveFileIsActive;
+	public int whatSaveFileIsActive = 0;
 	public int SceneID;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
-	private string saveFileName = ""; //saveFileName must be initialized without saveNumber before the two can be used together in a calculation
+	private string saveFileName = "";
+
+	public void Update() {
+		whatSaveFileIsActive = GlobalController.Instance.globalsActiveSave.save;
+	}
 
 	public void Save(int slot) { //note that Application.persistentDataPath is the default path location of save files for Unity3d. Calling on this allows this code to be multiplatform without worrying about special paths
 		if (!Directory.Exists(Application.persistentDataPath + "/Saves")) {
@@ -53,9 +57,19 @@ public class GlobalController : MonoBehaviour {
 		saveFile.Close();
 	}
 
-	public void Load(string saveName) {
+	public void LoadFromIndex(string slot) {
+		string saveNames = slot; //Application.persistentDataPath + "/Saves/save_" + slot + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
-		FileStream loadedFile = File.Open(saveName, FileMode.OpenOrCreate);
+		FileStream loadedFile = File.Open(saveNames, FileMode.OpenOrCreate);
+		LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(loadedFile);
+		loadedFile.Close();
+		UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+	}
+
+	public void Load(string slot) {
+		string saveNames = Application.persistentDataPath + "/Saves/save_" + slot + ".gd";
+		BinaryFormatter formatter = new BinaryFormatter();
+		FileStream loadedFile = File.Open(saveNames, FileMode.OpenOrCreate);
 		LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(loadedFile);
 		loadedFile.Close();
 		UnityEngine.SceneManagement.SceneManager.LoadScene("1");

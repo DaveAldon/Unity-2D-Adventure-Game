@@ -9,10 +9,12 @@ public class MainMenuManager : MonoBehaviour {
 	public enum Menu {
 		MainMenu,
 		NewGame,
-		Continue
+		Continue,
+		SaveSlots
 	}
 
 	public Menu currentMenu;
+
 	public string directoryPath;  
 	private string fullFilePath;  
 	private string dirOutputString = "";  
@@ -20,6 +22,8 @@ public class MainMenuManager : MonoBehaviour {
 	private string fileNumberString = "0";
 	private List<string> fileNames; //List that will store the game saves
 	public bool loadListLock = false;
+	public bool showNewGameSaveSlot = false;
+	public bool showSaveSlots = false;
 
 	private int newGameStartScene = 1;
 	private string newPlayerName = "";
@@ -47,6 +51,10 @@ public class MainMenuManager : MonoBehaviour {
 				currentMenu = Menu.Continue;
 			}
 
+			if(GUILayout.Button("Load a Game")) {
+				currentMenu = Menu.SaveSlots;
+			}
+
 			if(GUILayout.Button("Quit")) {
 				Application.Quit();
 			}
@@ -60,26 +68,12 @@ public class MainMenuManager : MonoBehaviour {
 			newPlayerName = GUILayout.TextField(newPlayerName, 20);
 
 			if(GUILayout.Button("Save")) {
-				if(GUILayout.Button("1")) {
-					GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 1);
-					GlobalController.Instance.globalsActiveSave.save = 3;
-					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
-				}
-				if(GUILayout.Button("2")) {
-					GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 2);
-					GlobalController.Instance.globalsActiveSave.save = 3;
-					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
-				}
-				if(GUILayout.Button("3")) {
-					GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 3);
-					GlobalController.Instance.globalsActiveSave.save = 3;
-					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
-				}
-				//GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ);
+				showNewGameSaveSlot = true;
 			}
 
 			GUILayout.Space(10);
 			if(GUILayout.Button("Cancel")) {
+				showNewGameSaveSlot = false;
 				currentMenu = Menu.MainMenu;
 			}	
 		}
@@ -101,8 +95,9 @@ public class MainMenuManager : MonoBehaviour {
 		 
 			if(GUI.Button(new Rect(210, Screen.height - 40, 150, 30), "Select file")) {   
 				int fileIndex = int.Parse(this.fileNumberString);
-				GlobalController.Instance.Load(this.directoryPath + "/" + this.fileNames[fileIndex]); //Passes selected save to the GlobalController Load() function
+				GlobalController.Instance.LoadFromIndex(this.directoryPath + "/" + this.fileNames[fileIndex]); //Passes selected save to the GlobalController Load() function
 				GlobalController.Instance.IsSceneBeingLoaded = true;
+				GlobalController.Instance.globalsActiveSave.save = int.Parse(this.fileNumberString);
 				int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
 				SceneManager.LoadScene (whatScene);
 			}  
@@ -110,6 +105,55 @@ public class MainMenuManager : MonoBehaviour {
 			GUILayout.Space(10);
 			if(GUILayout.Button("Cancel")) {
 				currentMenu = Menu.MainMenu;
+			}
+		}
+
+		else if (currentMenu == Menu.SaveSlots) {
+			GUILayout.Space(10);
+			if(GUILayout.Button("1")) {
+				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 1);
+				GlobalController.Instance.globalsActiveSave.save = 1;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+			}
+			GUILayout.Space(10);
+			if(GUILayout.Button("2")) {
+				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 2);
+				GlobalController.Instance.globalsActiveSave.save = 2;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+			}
+			GUILayout.Space(10);
+			if(GUILayout.Button("3")) {
+				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 3);
+				GlobalController.Instance.globalsActiveSave.save = 3;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+			}
+			GUILayout.Space(10);
+			if(GUILayout.Button("Cancel")) {
+				currentMenu = Menu.MainMenu;
+			}
+				//GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ);
+		}
+
+		if (showNewGameSaveSlot == true) {
+			GUILayout.Space(10);
+			GUILayout.Box("Choose Save Slot");
+			GUILayout.Space(10);
+			if(GUILayout.Button("1")) {
+				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 1);
+				GlobalController.Instance.globalsActiveSave.save = 1;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+			}
+			GUILayout.Space(10);
+			if(GUILayout.Button("2")) {
+				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 2);
+				GlobalController.Instance.globalsActiveSave.save = 2;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+			}
+			GUILayout.Space(10);
+			if(GUILayout.Button("3")) {
+				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 3);
+				GlobalController.Instance.globalsActiveSave.save = 3;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 			}
 		}
 
