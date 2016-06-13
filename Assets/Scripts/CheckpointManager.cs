@@ -3,20 +3,10 @@ using System.Collections;
 
 public class CheckpointManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	void OnCollisionEnter2D(Collision2D c) {
-		if(c.gameObject.tag == "Player") {
-			Destroy(transform.gameObject);
-			Debug.Log("something");
+	void OnTriggerEnter2D(Collider2D c) { //2D trigger function needs to receive a 2D collider
+		if(c.gameObject.tag == "Player") { //We only want the player to be able to activate checkpoints
+			Destroy(transform.gameObject); //Destroy the checkpoint
+			Debug.Log("Triggered Object and Destroyed Checkpoint");
 		}
 	}
 }
