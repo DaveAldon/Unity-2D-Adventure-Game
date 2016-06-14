@@ -18,7 +18,15 @@ public class GlobalController : MonoBehaviour {
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
+	public int[] unlockedLocations;
 	private string saveFileName = "";
+
+	public void Start() {
+		unlockedLocations = new int[2];
+		unlockedLocations [0] = 1;
+		unlockedLocations [1] = 2;
+		unlockedLocations [2] = 3;
+	}
 
 	public void Update() {
 		whatSaveFileIsActive = GlobalController.Instance.globalsActiveSave.save;

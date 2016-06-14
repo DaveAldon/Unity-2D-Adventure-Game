@@ -7,6 +7,11 @@ public class CheckpointManager : MonoBehaviour {
 		if(c.gameObject.tag == "Player") { //We only want the player to be able to activate checkpoints
 			Destroy(transform.gameObject); //Destroy the checkpoint
 			Debug.Log("Triggered Object and Destroyed Checkpoint");
+			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
+	}
+
+	public string getCheckpointName() {
+
 	}
 }

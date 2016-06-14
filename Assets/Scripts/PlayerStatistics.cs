@@ -9,4 +9,5 @@ public class PlayerStatistics {
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
+	public int[] unlockedLocations;
 }

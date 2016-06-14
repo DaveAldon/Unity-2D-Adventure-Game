@@ -57,17 +57,25 @@ public class SpriteCharacterController : MonoBehaviour {
 		SceneManager.LoadScene (whatScene);
 	}
 
-	void OnGUI() {
+	public void save(int slot) {
+		PlayerState.Instance.localPlayerData.SceneID = Application.loadedLevel;
+		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
+		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
+		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
+		GlobalController.Instance.Save(slot);
+	}
+
+	void OnGUI() { 
 		if(GUILayout.Button("Save 1")) {
-			SaveGame.Instance.save (1);
+			save (1);
 			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
 		if(GUILayout.Button("Save 2")) {
-			SaveGame.Instance.save (2);
+			save (2);
 			GlobalController.Instance.globalsActiveSave.save = 2;
 		}
 		if(GUILayout.Button("Save 3")) {
-			SaveGame.Instance.save (3);
+			save (3);
 			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
 
@@ -82,6 +90,6 @@ public class SpriteCharacterController : MonoBehaviour {
 		if(GUILayout.Button("Load 3")) {
 			loadGame("3");
 			GlobalController.Instance.globalsActiveSave.save = 3;
-		}
+		} 
 	}
 }
