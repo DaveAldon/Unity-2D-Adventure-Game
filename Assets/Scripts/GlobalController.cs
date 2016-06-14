@@ -13,7 +13,7 @@ public class GlobalController : MonoBehaviour {
 
 	public bool IsSceneBeingLoaded = false;
 
-	public int whatSaveFileIsActive = 0;
+	public int whatSaveFileIsActive = 1;
 	public int SceneID;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;

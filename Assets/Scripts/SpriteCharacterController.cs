@@ -7,7 +7,6 @@ public class SpriteCharacterController : MonoBehaviour {
 	public float maxSpeed = 10f;
 	bool facingForward = true;
 	public float playerSpeed = 10f;
-
 	public static SpriteCharacterController Instance;
 
 	void Start() {
@@ -58,25 +57,17 @@ public class SpriteCharacterController : MonoBehaviour {
 		SceneManager.LoadScene (whatScene);
 	}
 
-	public void saveGame(int slot) {
-		PlayerState.Instance.localPlayerData.SceneID = Application.loadedLevel;
-		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
-		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
-		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
-		GlobalController.Instance.Save(slot);
-	}
-
 	void OnGUI() {
 		if(GUILayout.Button("Save 1")) {
-			saveGame(1);
+			SaveGame.Instance.save (1);
 			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
 		if(GUILayout.Button("Save 2")) {
-			saveGame(2);
+			SaveGame.Instance.save (2);
 			GlobalController.Instance.globalsActiveSave.save = 2;
 		}
 		if(GUILayout.Button("Save 3")) {
-			saveGame(3);
+			SaveGame.Instance.save (3);
 			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
 
