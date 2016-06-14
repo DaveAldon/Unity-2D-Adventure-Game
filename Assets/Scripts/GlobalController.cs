@@ -22,7 +22,7 @@ public class GlobalController : MonoBehaviour {
 	private string saveFileName = "";
 
 	public void Start() {
-		unlockedLocations = new int[2];
+		unlockedLocations = new int[3];
 		unlockedLocations [0] = 1;
 		unlockedLocations [1] = 2;
 		unlockedLocations [2] = 3;
