@@ -190,8 +190,8 @@ GameObject:
   - 212: {fileID: 1296373907}
   - 95: {fileID: 1296373906}
   - 58: {fileID: 1296373909}
-  - 114: {fileID: 1296373910}
   - 50: {fileID: 1296373911}
+  - 114: {fileID: 1296373910}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -284,9 +284,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1296373905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a42a92c3d255c4434a4234b0ad1ec756, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d70b1fb6f646dd44920f38ceea29cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpointID: 1
+  triggerGUI: 0
 --- !u!50 &1296373911
 Rigidbody2D:
   serializedVersion: 2
@@ -309,6 +311,46 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010442833972, guid: 67ca0240820462d47bed7613385ee1d6,
     type: 2}
   m_PrefabInternal: {fileID: 745779866}
+--- !u!1 &1811453671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1811453673}
+  - 114: {fileID: 1811453672}
+  m_Layer: 0
+  m_Name: CheckpointManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1811453672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811453671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42a92c3d255c4434a4234b0ad1ec756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1811453673
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811453671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12103451, y: 2.4597538, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1920358533
 GameObject:
   m_ObjectHideFlags: 0
