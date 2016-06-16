@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CheckpointManager : MonoBehaviour {
 
-	public string getCheckpointName(int checkpointID) {
+	//public int[] unlockedCheckpoints;
+
+	public static string getCheckpointName(int checkpointID) {
 		if (checkpointID == 1) {
 			return "Start Position";
 		} else if (checkpointID == 2) {
@@ -11,6 +13,14 @@ public class CheckpointManager : MonoBehaviour {
 		} else if (checkpointID == 3) {
 			return "East Checkpoint";
 		} else
-			return "You don't have a checkpoint saved";
+			return "Incorrect Checkpoint ID";
+	}
+
+	public static int[] getUnlockedCheckpoints(int checkpointID)
+	{
+		int[] unlockedCheckpoints;
+		unlockedCheckpoints = new int[3];
+
+		return unlockedCheckpoints;
 	}
 }
