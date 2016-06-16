@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CheckpointManager : MonoBehaviour {
 
-	//public int[] unlockedCheckpoints;
+	public static List<int> unlockedCheckpointList = new List<int>();
 
 	public static string getCheckpointName(int checkpointID) {
 		if (checkpointID == 1) {
@@ -16,11 +17,15 @@ public class CheckpointManager : MonoBehaviour {
 			return "Incorrect Checkpoint ID";
 	}
 
-	public static int[] getUnlockedCheckpoints(int checkpointID)
-	{
-		int[] unlockedCheckpoints;
-		unlockedCheckpoints = new int[3];
+	public static int getUnlockedCheckpoints() {
+		if (unlockedCheckpointList.Count >= 0) {
+			for (int i = 1; i < unlockedCheckpointList.Count; i++) {
+				return unlockedCheckpointList [i];
+			}
+		}
+	}
 
-		return unlockedCheckpoints;
+	public static void unlockedCheckpoint(int checkpointID) {
+		unlockedCheckpointList.Add (checkpointID);
 	}
 }
