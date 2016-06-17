@@ -25,7 +25,7 @@ public class CheckpointManager : MonoBehaviour {
 
 	void OnGUI() {
 		if (showCheckpoints) {
-			GUILayout.TextArea ("hello");
+			GUILayout.TextArea (getUnlockedCheckpoints(1).ToString());
 		}
 	}
 

@@ -23,7 +23,7 @@ public class SpriteCharacterController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		MoveForward (); // Player Movement
+		Controls (); // Player Movement
 	}
 
 	void flip()//flipping the sprite and animation backwards
@@ -34,7 +34,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-	void MoveForward()
+	void Controls()
 	{
 		if (Input.GetKey ("up")) {//Press up arrow key to move forward on the Y AXIS
 			transform.Translate (0, playerSpeed * Time.deltaTime, 0);
@@ -97,6 +97,9 @@ public class SpriteCharacterController : MonoBehaviour {
 		if(GUILayout.Button("Load 3")) {
 			loadGame("3");
 			GlobalController.Instance.globalsActiveSave.save = 3;
+		}
+		if (GUILayout.Button ("Unlock Checkpoint 1")) {
+			CheckpointManager.Instance.unlockedCheckpoint (1);
 		}
 	}
 }
