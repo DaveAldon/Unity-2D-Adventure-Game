@@ -48,6 +48,13 @@ public class SpriteCharacterController : MonoBehaviour {
 		if (Input.GetKey ("left")) {
 			transform.Translate (-playerSpeed * Time.deltaTime, 0, 0);
 		}
+
+		if (Input.GetKeyDown ("space")) {
+			CheckpointManager.showCheckpoints = true;
+		}
+		if (Input.GetKeyUp ("space")) {
+			CheckpointManager.showCheckpoints = false;
+		} 
 	}
 
 	public void loadGame(string slot) {
@@ -90,6 +97,6 @@ public class SpriteCharacterController : MonoBehaviour {
 		if(GUILayout.Button("Load 3")) {
 			loadGame("3");
 			GlobalController.Instance.globalsActiveSave.save = 3;
-		} 
+		}
 	}
 }

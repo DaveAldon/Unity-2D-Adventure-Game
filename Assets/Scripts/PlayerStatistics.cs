@@ -10,4 +10,5 @@ public class PlayerStatistics {
 	public float HP;
 	public string characterName;
 	public int[] unlockedLocations;
+	public List<int> unlockedCheckpointList;
 }

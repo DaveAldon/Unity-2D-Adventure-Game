@@ -18,14 +18,13 @@ public class GlobalController : MonoBehaviour {
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
-	public int[] unlockedLocations;
+	public List<int> unlockedCheckpointList;
 	private string saveFileName = "";
 
 	public void Start() {
-		unlockedLocations = new int[3];
-		unlockedLocations [0] = 1;
-		unlockedLocations [1] = 2;
-		unlockedLocations [2] = 3;
+		unlockedCheckpointList.Add(1);
+		unlockedCheckpointList.Add(2);
+		unlockedCheckpointList.Add(3);
 	}
 
 	public void Update() {
