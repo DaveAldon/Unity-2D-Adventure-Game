@@ -25,7 +25,12 @@ public class CheckpointManager : MonoBehaviour {
 
 	void OnGUI() {
 		if (showCheckpoints) {
-			GUILayout.TextArea (getUnlockedCheckpoints(1).ToString());
+			if(0 < GlobalController.Instance.savedPlayerData.unlockedCheckpointList.Count) {
+				GUILayout.TextArea (getUnlockedCheckpoints(3).ToString() + getCheckpointName(3));
+			}
+			else {
+				GUILayout.TextArea("Nothing in list");
+			}
 		}
 	}
 

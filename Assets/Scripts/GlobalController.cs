@@ -22,9 +22,6 @@ public class GlobalController : MonoBehaviour {
 	private string saveFileName = "";
 
 	public void Start() {
-		unlockedCheckpointList.Add(1);
-		unlockedCheckpointList.Add(2);
-		unlockedCheckpointList.Add(3);
 	}
 
 	public void Update() {
