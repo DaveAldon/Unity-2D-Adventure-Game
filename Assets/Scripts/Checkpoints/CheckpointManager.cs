@@ -7,6 +7,7 @@ public class CheckpointManager : MonoBehaviour {
 	//public static List<int> unlockedCheckpointList = new List<int>();
 	public static CheckpointManager Instance;
 	public static bool showCheckpoints = false;
+	public List<int> unlockedCheckpointList = new List<int>();
 
 	public static string getCheckpointName(int checkpointID) {
 		if (checkpointID == 1) {
@@ -20,13 +21,13 @@ public class CheckpointManager : MonoBehaviour {
 	}
 
 	public static int getUnlockedCheckpoints(int checkpointID) {
-		return GlobalController.Instance.savedPlayerData.unlockedCheckpointList [checkpointID];
+		return CheckpointManager.Instance.unlockedCheckpointList [checkpointID];
 	}
 
 	void OnGUI() {
 		if (showCheckpoints) {
 			if(0 < GlobalController.Instance.savedPlayerData.unlockedCheckpointList.Count) {
-				GUILayout.TextArea (getUnlockedCheckpoints(3).ToString() + getCheckpointName(3));
+				GUILayout.TextArea (getUnlockedCheckpoints(1).ToString() + getCheckpointName(1));
 			}
 			else {
 				GUILayout.TextArea("Nothing in list");
@@ -35,7 +36,7 @@ public class CheckpointManager : MonoBehaviour {
 	}
 
 	public void unlockedCheckpoint(int checkpointID) {
-		GlobalController.Instance.savedPlayerData.unlockedCheckpointList.Add (checkpointID);
+		this.unlockedCheckpointList.Add (checkpointID);
 	}
 
 	void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes

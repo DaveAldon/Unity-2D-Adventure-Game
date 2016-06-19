@@ -18,7 +18,6 @@ public class GlobalController : MonoBehaviour {
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
-	public List<int> unlockedCheckpointList;
 	private string saveFileName = "";
 
 	public void Start() {

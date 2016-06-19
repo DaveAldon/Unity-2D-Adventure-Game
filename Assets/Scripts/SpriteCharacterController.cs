@@ -62,6 +62,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		GlobalController.Instance.IsSceneBeingLoaded = true;
 		int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
 		SceneManager.LoadScene (whatScene);
+		CheckpointManager.Instance.unlockedCheckpointList = GlobalController.Instance.savedPlayerData.unlockedCheckpointList;
 	}
 
 	public void save(int slot) {
@@ -69,6 +70,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
 		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
 		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
+		GlobalController.Instance.savedPlayerData.unlockedCheckpointList = CheckpointManager.Instance.unlockedCheckpointList;
 		GlobalController.Instance.Save(slot);
 	}
 
@@ -100,6 +102,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		}
 		if (GUILayout.Button ("Unlock Checkpoint 1")) {
 			CheckpointManager.Instance.unlockedCheckpoint (1);
+
 		}
 	}
 }

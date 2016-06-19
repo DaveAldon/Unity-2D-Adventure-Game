@@ -10,7 +10,7 @@ public class PlayerState : MonoBehaviour {
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
-	public List<int> unlockedCheckpointList = new List<int>();
+	public List<int> unlockedCheckpointList;
 	public PlayerStatistics localPlayerData = new PlayerStatistics();
 
 	void Awake() {
