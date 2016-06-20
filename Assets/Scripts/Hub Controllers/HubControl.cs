@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class IndividualCheckpoint : MonoBehaviour {
+public class HubControl : MonoBehaviour {
 
-	public int checkpointID = 1;
 	public bool triggerGUI = false;
 	public string checkpointName = "";
+	public List<int> hubCheckpoints = new List<int> ();
 
 	void Start() {
-		checkpointName = getCheckpointName();
-	}
-
-	public string getCheckpointName() {
-		return CheckpointManager.getCheckpointName(checkpointID);
+		hubCheckpoints = CheckpointManager.Instance.unlockedCheckpoints;
+		/*
+		for (int i = 0; i < hubCheckpoints.Count; i++) {
+			hubCheckpoints[i] = CheckpointManager.Instance.unlockedCheckpoints [i];
+		}
+		*/
 	}
 
 	void OnTriggerEnter2D(Collider2D c) { //2D trigger function needs to receive a 2D collider
@@ -28,11 +30,16 @@ public class IndividualCheckpoint : MonoBehaviour {
 	void OnGUI() {
 		if(triggerGUI == true) {
 			GUILayout.Space(500);
+			for (int i = 0; i < hubCheckpoints.Count; i++) {
+				if (GUI.Button (new Rect (500, i * 30, 100, 20), "Button!")) {
+
+				}
+			}
 			if (GUILayout.Button ("Click to Save Checkpoint")) {
-				CheckpointManager.Instance.unlockedCheckpoint (checkpointID);
 				GlobalController.Instance.Save (GlobalController.Instance.globalsActiveSave.save);
 				Debug.Log(GlobalController.Instance.globalsActiveSave.save.ToString());
 			}
 		}
 	}
 }
+

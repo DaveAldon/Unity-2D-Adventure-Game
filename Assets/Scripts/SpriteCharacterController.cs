@@ -57,7 +57,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		} 
 	}
 
-	public void loadGame(string slot) {
+	public void loadGame(int slot) {
 		GlobalController.Instance.Load(slot);
 		GlobalController.Instance.IsSceneBeingLoaded = true;
 		int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
@@ -65,40 +65,39 @@ public class SpriteCharacterController : MonoBehaviour {
 	}
 
 	public void save(int slot) {
-		PlayerState.Instance.localPlayerData.characterName = GlobalController.Instance.characterName;;
+		PlayerState.Instance.localPlayerData.characterName = GlobalController.Instance.characterName;
 		PlayerState.Instance.localPlayerData.SceneID = Application.loadedLevel;
 		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
 		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
 		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
 		PlayerState.Instance.localPlayerData.unlockedCheckpointList = CheckpointManager.Instance.unlockedCheckpoints;
-		//GlobalController.Instance.LocalCopyOfData.unlockedCheckpointList = CheckpointManager.Instance.unlockedCheckpoints;
 		GlobalController.Instance.Save(slot);
 	}
 
 	void OnGUI() { 
 		if(GUILayout.Button("Save 1")) {
-			save (1);
+			save(1);
 			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
 		if(GUILayout.Button("Save 2")) {
-			save (2);
+			save(2);
 			GlobalController.Instance.globalsActiveSave.save = 2;
 		}
 		if(GUILayout.Button("Save 3")) {
-			save (3);
+			save(3);
 			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
 
 		if(GUILayout.Button("Load 1")) {
-			loadGame("1");
+			loadGame(1);
 			GlobalController.Instance.globalsActiveSave.save = 1;
 		}
 		if(GUILayout.Button("Load 2")) {
-			loadGame("2");
+			loadGame(2);
 			GlobalController.Instance.globalsActiveSave.save = 2;
 		}
 		if(GUILayout.Button("Load 3")) {
-			loadGame("3");
+			loadGame(3);
 			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
 		if (GUILayout.Button ("Unlock Checkpoint 1")) {

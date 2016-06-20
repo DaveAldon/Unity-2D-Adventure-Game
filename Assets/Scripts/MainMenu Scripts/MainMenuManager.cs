@@ -111,19 +111,28 @@ public class MainMenuManager : MonoBehaviour {
 		else if (currentMenu == Menu.SaveSlots) {
 			GUILayout.Space(10);
 			if(GUILayout.Button("1")) {
-				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 1);
+				GlobalController.Instance.Load(1);
+				GlobalController.Instance.IsSceneBeingLoaded = true;
+				int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
+				SceneManager.LoadScene (whatScene);
 				GlobalController.Instance.globalsActiveSave.save = 1;
 				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 			}
 			GUILayout.Space(10);
 			if(GUILayout.Button("2")) {
-				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 2);
+				GlobalController.Instance.Load(2);
+				GlobalController.Instance.IsSceneBeingLoaded = true;
+				int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
+				SceneManager.LoadScene (whatScene);
 				GlobalController.Instance.globalsActiveSave.save = 2;
 				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 			}
 			GUILayout.Space(10);
 			if(GUILayout.Button("3")) {
-				GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ, 3);
+				GlobalController.Instance.Load(3);
+				GlobalController.Instance.IsSceneBeingLoaded = true;
+				int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
+				SceneManager.LoadScene (whatScene);
 				GlobalController.Instance.globalsActiveSave.save = 3;
 				UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 			}

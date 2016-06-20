@@ -70,7 +70,7 @@ public class GlobalController : MonoBehaviour {
 		UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 	}
 
-	public void Load(string slot) {
+	public void Load(int slot) {
 		string saveNames = Application.persistentDataPath + "/Saves/save_" + slot + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream loadedFile = File.Open(saveNames, FileMode.OpenOrCreate);
