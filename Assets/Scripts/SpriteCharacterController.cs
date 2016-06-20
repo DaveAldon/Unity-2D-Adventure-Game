@@ -62,15 +62,16 @@ public class SpriteCharacterController : MonoBehaviour {
 		GlobalController.Instance.IsSceneBeingLoaded = true;
 		int whatScene = GlobalController.Instance.LocalCopyOfData.SceneID;
 		SceneManager.LoadScene (whatScene);
-		CheckpointManager.Instance.unlockedCheckpointList = GlobalController.Instance.savedPlayerData.unlockedCheckpointList;
 	}
 
 	public void save(int slot) {
+		PlayerState.Instance.localPlayerData.characterName = GlobalController.Instance.characterName;;
 		PlayerState.Instance.localPlayerData.SceneID = Application.loadedLevel;
 		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
 		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
 		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
-		GlobalController.Instance.savedPlayerData.unlockedCheckpointList = CheckpointManager.Instance.unlockedCheckpointList;
+		PlayerState.Instance.localPlayerData.unlockedCheckpointList = CheckpointManager.Instance.unlockedCheckpoints;
+		//GlobalController.Instance.LocalCopyOfData.unlockedCheckpointList = CheckpointManager.Instance.unlockedCheckpoints;
 		GlobalController.Instance.Save(slot);
 	}
 

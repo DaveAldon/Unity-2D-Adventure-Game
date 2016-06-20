@@ -48,6 +48,7 @@ public class GlobalController : MonoBehaviour {
 
 		PlayerState.Instance.localPlayerData.SceneID = sceneid;
 		PlayerState.Instance.localPlayerData.characterName = name;
+		characterName = name;
 		PlayerState.Instance.localPlayerData.PositionX = X;
 		PlayerState.Instance.localPlayerData.PositionY = Y;
 		PlayerState.Instance.localPlayerData.PositionZ = Z;
