@@ -31,7 +31,7 @@ public class HubControl : MonoBehaviour {
 		if(triggerGUI == true) {
 			GUILayout.Space(500);
 			for (int i = 0; i < hubCheckpoints.Count; i++) {
-				if (GUI.Button (new Rect (500, i * 30, 100, 20), "Button!")) {
+				if (GUI.Button (new Rect (500, i * 30, 200, 20), CheckpointManager.getCheckpointName(CheckpointManager.getUnlockedCheckpoints(i)))) {
 
 				}
 			}

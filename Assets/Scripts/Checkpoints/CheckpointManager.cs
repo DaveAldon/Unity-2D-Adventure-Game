@@ -10,18 +10,18 @@ public class CheckpointManager : MonoBehaviour {
 	public List<int> unlockedCheckpoints = new List<int>();
 
 	public static string getCheckpointName(int checkpointID) {
-		if (checkpointID == 1) {
+		if (checkpointID == 0) {
 			return "Start Position";
-		} else if (checkpointID == 2) {
+		} else if (checkpointID == 1) {
 			return "North Checkpoint";
-		} else if (checkpointID == 3) {
+		} else if (checkpointID == 2) {
 			return "East Checkpoint";
 		} else
 			return "Incorrect Checkpoint ID";
 	}
 
 	public static int getUnlockedCheckpoints(int checkpointID) {
-		return CheckpointManager.Instance.unlockedCheckpoints [checkpointID];
+		return CheckpointManager.Instance.unlockedCheckpoints.IndexOf (checkpointID);
 	}
 
 	void OnGUI() {

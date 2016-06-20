@@ -87,7 +87,6 @@ public class SpriteCharacterController : MonoBehaviour {
 			save(3);
 			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
-
 		if(GUILayout.Button("Load 1")) {
 			loadGame(1);
 			GlobalController.Instance.globalsActiveSave.save = 1;
@@ -100,9 +99,17 @@ public class SpriteCharacterController : MonoBehaviour {
 			loadGame(3);
 			GlobalController.Instance.globalsActiveSave.save = 3;
 		}
+		if (GUILayout.Button ("Unlock Checkpoint 0")) {
+			CheckpointManager.Instance.unlockedCheckpoint (0);
+		}
 		if (GUILayout.Button ("Unlock Checkpoint 1")) {
 			CheckpointManager.Instance.unlockedCheckpoint (1);
-
+		}
+		if (GUILayout.Button ("Unlock Checkpoint 2")) {
+			CheckpointManager.Instance.unlockedCheckpoint (2);
+		}
+		if (GUILayout.Button ("Unlock Checkpoint 3")) {
+			CheckpointManager.Instance.unlockedCheckpoint (3);
 		}
 	}
 }
