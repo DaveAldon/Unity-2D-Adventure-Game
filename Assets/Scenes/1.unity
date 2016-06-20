@@ -223,6 +223,11 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212000011030129074, guid: 67ca0240820462d47bed7613385ee1d6,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67ca0240820462d47bed7613385ee1d6, type: 2}
   m_IsPrefabParent: 0
@@ -274,6 +279,11 @@ Prefab:
       propertyPath: checkpointID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 212000012400990826, guid: 5f9c3ecf808d2644eb85575dee3c9564,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f9c3ecf808d2644eb85575dee3c9564, type: 2}
   m_IsPrefabParent: 0
@@ -367,6 +377,11 @@ Prefab:
       propertyPath: checkpointID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212000012400990826, guid: 5f9c3ecf808d2644eb85575dee3c9564,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f9c3ecf808d2644eb85575dee3c9564, type: 2}
   m_IsPrefabParent: 0
@@ -404,7 +419,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
