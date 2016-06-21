@@ -7,9 +7,10 @@ public class HubControl : MonoBehaviour {
 	public bool triggerGUI = false;
 	public string checkpointName = "";
 	public List<int> hubCheckpoints = new List<int> ();
+	public CheckpointCoordinate buttonCoordinates = new CheckpointCoordinate ();
 
 	void Start() {
-		hubCheckpoints = CheckpointManager.Instance.unlockedCheckpoints;
+		hubCheckpoints = CheckpointManager.Instance.unlockedCheckpoints; //Assigns the list values from the global controller to the hub controller
 		/*
 		for (int i = 0; i < hubCheckpoints.Count; i++) {
 			hubCheckpoints[i] = CheckpointManager.Instance.unlockedCheckpoints [i];
@@ -32,7 +33,8 @@ public class HubControl : MonoBehaviour {
 			GUILayout.Space(500);
 			for (int i = 0; i < hubCheckpoints.Count; i++) {
 				if (GUI.Button (new Rect (500, i * 30, 200, 20), CheckpointManager.getCheckpointName(CheckpointManager.getUnlockedCheckpoints(i)))) {
-
+					buttonCoordinates = CheckpointManager.getCheckpointCoordinates (i);
+					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 				}
 			}
 			if (GUILayout.Button ("Click to Save Checkpoint")) {

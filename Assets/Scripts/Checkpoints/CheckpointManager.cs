@@ -20,6 +20,22 @@ public class CheckpointManager : MonoBehaviour {
 			return "Incorrect Checkpoint ID";
 	}
 
+	public static CheckpointCoordinate getCheckpointCoordinates(int checkpointID) {
+		CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate();
+
+		if (checkpointID == 0) {
+			checkpointCoordinates.x = 0;
+			checkpointCoordinates.y = 0;
+		} else if (checkpointID == 1) {
+			checkpointCoordinates.x = 100;
+			checkpointCoordinates.y = 100;
+		} else if (checkpointID == 2) {
+			checkpointCoordinates.x = -100;
+			checkpointCoordinates.y = -100;
+		}
+		return checkpointCoordinates;
+	}
+
 	public static int getUnlockedCheckpoints(int checkpointID) {
 		return CheckpointManager.Instance.unlockedCheckpoints.IndexOf (checkpointID);
 	}
