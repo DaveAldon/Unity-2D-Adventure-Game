@@ -26,12 +26,15 @@ public class CheckpointManager : MonoBehaviour {
 		if (checkpointID == 0) {
 			checkpointCoordinates.x = 0;
 			checkpointCoordinates.y = 0;
+			checkpointCoordinates.z = 0;
 		} else if (checkpointID == 1) {
 			checkpointCoordinates.x = 100;
 			checkpointCoordinates.y = 100;
+			checkpointCoordinates.z = 0;
 		} else if (checkpointID == 2) {
 			checkpointCoordinates.x = -100;
 			checkpointCoordinates.y = -100;
+			checkpointCoordinates.z = 0;
 		}
 		return checkpointCoordinates;
 	}
