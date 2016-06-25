@@ -31,6 +31,7 @@ public class HubControl : MonoBehaviour {
 				if (GUI.Button (new Rect (500, i * 30, 200, 20), CheckpointManager.getCheckpointName(CheckpointManager.getUnlockedCheckpoints(i)))) {
 					buttonCoordinates = CheckpointManager.getCheckpointCoordinates (i);
 					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
+					buttonCoordinates = CheckpointManager.Instance.checkpointCoordinates;
 					PlayerState.Instance.localPlayerData.PositionX = buttonCoordinates.x;
 					PlayerState.Instance.localPlayerData.PositionY = buttonCoordinates.y;
 					PlayerState.Instance.localPlayerData.PositionZ = buttonCoordinates.z;

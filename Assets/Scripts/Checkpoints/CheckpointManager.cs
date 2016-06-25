@@ -8,6 +8,7 @@ public class CheckpointManager : MonoBehaviour {
 	public static CheckpointManager Instance;
 	public static bool showCheckpoints = false;
 	public List<int> unlockedCheckpoints = new List<int>();
+	public CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate();
 
 	public static string getCheckpointName(int checkpointID) {
 		if (checkpointID == 0) {
@@ -21,22 +22,20 @@ public class CheckpointManager : MonoBehaviour {
 	}
 
 	public static CheckpointCoordinate getCheckpointCoordinates(int checkpointID) {
-		CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate();
-
 		if (checkpointID == 0) {
-			checkpointCoordinates.x = 0;
-			checkpointCoordinates.y = 0;
-			checkpointCoordinates.z = 0;
+			CheckpointManager.Instance.checkpointCoordinates.x = 0;
+			CheckpointManager.Instance.checkpointCoordinates.y = 0;
+			CheckpointManager.Instance.checkpointCoordinates.z = 0;
 		} else if (checkpointID == 1) {
-			checkpointCoordinates.x = 100;
-			checkpointCoordinates.y = 100;
-			checkpointCoordinates.z = 0;
+			CheckpointManager.Instance.checkpointCoordinates.x = 100;
+			CheckpointManager.Instance.checkpointCoordinates.y = 100;
+			CheckpointManager.Instance.checkpointCoordinates.z = 0;
 		} else if (checkpointID == 2) {
-			checkpointCoordinates.x = -100;
-			checkpointCoordinates.y = -100;
-			checkpointCoordinates.z = 0;
+			CheckpointManager.Instance.checkpointCoordinates.x = -100;
+			CheckpointManager.Instance.checkpointCoordinates.y = -100;
+			CheckpointManager.Instance.checkpointCoordinates.z = 0;
 		}
-		return checkpointCoordinates;
+		return CheckpointManager.Instance.checkpointCoordinates;
 	}
 
 	public static int getUnlockedCheckpoints(int checkpointID) {
