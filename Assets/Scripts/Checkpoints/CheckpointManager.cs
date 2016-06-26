@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class CheckpointManager : MonoBehaviour {
 
-	//public static List<int> unlockedCheckpointList = new List<int>();
 	public static CheckpointManager Instance;
 	public static bool showCheckpoints = false;
 	public List<int> unlockedCheckpoints = new List<int>();
@@ -27,12 +26,12 @@ public class CheckpointManager : MonoBehaviour {
 			CheckpointManager.Instance.checkpointCoordinates.y = 0;
 			CheckpointManager.Instance.checkpointCoordinates.z = 0;
 		} else if (checkpointID == 1) {
-			CheckpointManager.Instance.checkpointCoordinates.x = 100;
-			CheckpointManager.Instance.checkpointCoordinates.y = 100;
+			CheckpointManager.Instance.checkpointCoordinates.x = 10;
+			CheckpointManager.Instance.checkpointCoordinates.y = 10;
 			CheckpointManager.Instance.checkpointCoordinates.z = 0;
 		} else if (checkpointID == 2) {
-			CheckpointManager.Instance.checkpointCoordinates.x = -100;
-			CheckpointManager.Instance.checkpointCoordinates.y = -100;
+			CheckpointManager.Instance.checkpointCoordinates.x = -10;
+			CheckpointManager.Instance.checkpointCoordinates.y = -10;
 			CheckpointManager.Instance.checkpointCoordinates.z = 0;
 		}
 		return CheckpointManager.Instance.checkpointCoordinates;

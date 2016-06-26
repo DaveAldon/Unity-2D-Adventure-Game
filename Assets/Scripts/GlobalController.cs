@@ -12,9 +12,11 @@ public class GlobalController : MonoBehaviour {
 	public ActiveSave globalsActiveSave = new ActiveSave();
 
 	public bool IsSceneBeingLoaded = false;
+	public bool IsCheckpointBeingActivated = false;
 
 	public int whatSaveFileIsActive = 1;
 	public int SceneID;
+	public int whatCheckpointIsLoading = 0;
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;

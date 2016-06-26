@@ -8,17 +8,29 @@ public class SpriteCharacterController : MonoBehaviour {
 	bool facingForward = true;
 	public float playerSpeed = 10f;
 	public static SpriteCharacterController Instance;
+	public CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate();
 
 	void Start() {
 		if (GlobalController.Instance.IsSceneBeingLoaded) {
 			PlayerState.Instance.localPlayerData = GlobalController.Instance.LocalCopyOfData;
-
 			transform.position = new Vector3(
 				GlobalController.Instance.LocalCopyOfData.PositionX,
 				GlobalController.Instance.LocalCopyOfData.PositionY,
-				GlobalController.Instance.LocalCopyOfData.PositionZ);
+				GlobalController.Instance.LocalCopyOfData.PositionZ
+			);
 
 			GlobalController.Instance.IsSceneBeingLoaded = false;
+		}
+
+		if (GlobalController.Instance.IsCheckpointBeingActivated) {
+			checkpointCoordinates = CheckpointManager.getCheckpointCoordinates(GlobalController.Instance.whatCheckpointIsLoading);
+			transform.position = new Vector3(
+				checkpointCoordinates.x,
+				checkpointCoordinates.y,
+				checkpointCoordinates.z
+			);
+
+			GlobalController.Instance.IsCheckpointBeingActivated = false;
 		}
 	}
 
