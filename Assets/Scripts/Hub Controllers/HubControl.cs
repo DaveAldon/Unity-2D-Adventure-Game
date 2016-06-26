@@ -11,7 +11,10 @@ public class HubControl : MonoBehaviour {
 	public CheckpointCoordinate buttonCoordinates = new CheckpointCoordinate (); //New class deriving from the base CheckpointCoordinate class which holds only x, y, and z floats
 
 	void Start() {
-		hubCheckpoints = CheckpointManager.Instance.unlockedCheckpoints; //Assigns the list values from the global controller to the hub controller9
+		transform.position = new Vector3(0,5,0);
+		hubCheckpoints = CheckpointManager.Instance.unlockedCheckpoints; //Assigns the list values from the global controller to the hub controller
+		GlobalController.Instance.Save (GlobalController.Instance.globalsActiveSave.save);
+		triggerGUI = true;
 	}
 
 	void OnTriggerEnter2D(Collider2D c) { //2D trigger function needs to receive a 2D collider
@@ -25,7 +28,7 @@ public class HubControl : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		if(triggerGUI == true) {
+		if(triggerGUI) {
 			GUILayout.Space(500);
 			for (int i = 0; i < hubCheckpoints.Count; i++) {
 				if (GUI.Button (new Rect (500, i * 30, 200, 20), CheckpointManager.getCheckpointName(CheckpointManager.getUnlockedCheckpoints(i)))) {
@@ -33,7 +36,6 @@ public class HubControl : MonoBehaviour {
 					GlobalController.Instance.whatCheckpointIsLoading = i; //Sets a global number that is used by the SpriteCharacterController in order to manage checkpoint coordinate loading
 					GlobalController.Instance.IsCheckpointBeingActivated = true; //SpriteCharacterController checks if this is true on start in order to activate checkpoint coordinate functions
 					UnityEngine.SceneManagement.SceneManager.LoadScene("1");
-					//triggerGUI = false; 
 				}
 			}
 
@@ -44,7 +46,7 @@ public class HubControl : MonoBehaviour {
 		}
 	}
 
-	void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes
+	/*void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes
 		if (Instance == null) {
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
@@ -52,6 +54,6 @@ public class HubControl : MonoBehaviour {
 		else if (Instance != this) {
 			Destroy (gameObject);
 		}
-	}
+	} */
 }
 

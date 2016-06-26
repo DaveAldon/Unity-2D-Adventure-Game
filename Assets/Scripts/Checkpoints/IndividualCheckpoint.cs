@@ -4,7 +4,8 @@ using System.Collections;
 public class IndividualCheckpoint : MonoBehaviour {
 
 	public int checkpointID = 1;
-	public bool triggerGUI = false;
+	public bool triggerCheckpointGUI = false;
+	public bool travelTriggerGUI = false;
 	public string checkpointName = "";
 
 	void Start() {
@@ -17,21 +18,27 @@ public class IndividualCheckpoint : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D c) { //2D trigger function needs to receive a 2D collider
 		if(c.gameObject.tag == "Player") { //We only want the player to be able to activate checkpoints
-			triggerGUI = true;
+			triggerCheckpointGUI = true;
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D c) {
-		triggerGUI = false;
+		triggerCheckpointGUI = false;
 	}
 
 	void OnGUI() {
-		if(triggerGUI == true) {
+		if(triggerCheckpointGUI) {
 			GUILayout.Space(500);
 			if (GUILayout.Button ("Click to Save Checkpoint")) {
 				CheckpointManager.Instance.unlockedCheckpoint (checkpointID);
-				GlobalController.Instance.Save (GlobalController.Instance.globalsActiveSave.save);
 				Debug.Log(GlobalController.Instance.globalsActiveSave.save.ToString());
+				travelTriggerGUI = true;
+			}
+			if(travelTriggerGUI) {
+				if (GUILayout.Button ("Travel to Hub")) {
+					travelTriggerGUI = false;
+					UnityEngine.SceneManagement.SceneManager.LoadScene("Hub");
+				}
 			}
 		}
 	}
