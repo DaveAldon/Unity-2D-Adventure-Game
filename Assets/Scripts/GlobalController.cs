@@ -16,7 +16,7 @@ public class GlobalController : MonoBehaviour {
 
 	public int whatSaveFileIsActive = 1;
 	public int SceneID;
-	public int whatCheckpointIsLoading = 0;
+	public int whatCheckpointIsLoading = 0; //We want the default to be 0 (Goes to the starting location) in case checkpoint loading is activated and there are no checkpoints unlocked
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
@@ -33,6 +33,7 @@ public class GlobalController : MonoBehaviour {
 		if (!Directory.Exists(Application.persistentDataPath + "/Saves")) {
 			Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
 		}
+
 		saveFileName = "save_" + slot + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream saveFile = File.Create(Application.persistentDataPath + "/Saves/" + saveFileName);
@@ -44,10 +45,8 @@ public class GlobalController : MonoBehaviour {
 	}
 
 	public void NewSave(int sceneid, string name, float X, float Y, float Z, int save) {
-
 		GameObject prefab = Resources.Load<GameObject> ("Prefabs/Character");
 		Instantiate (prefab, new Vector3 (X, Y, Z), Quaternion.identity);
-
 		PlayerState.Instance.localPlayerData.SceneID = sceneid;
 		PlayerState.Instance.localPlayerData.characterName = name;
 		characterName = name;
@@ -64,7 +63,7 @@ public class GlobalController : MonoBehaviour {
 	}
 
 	public void LoadFromIndex(string slot) {
-		string saveNames = slot; //Application.persistentDataPath + "/Saves/save_" + slot + ".gd";
+		string saveNames = slot;
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream loadedFile = File.Open(saveNames, FileMode.OpenOrCreate);
 		LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(loadedFile);
@@ -73,7 +72,7 @@ public class GlobalController : MonoBehaviour {
 	}
 
 	public void Load(int slot) {
-		string saveNames = Application.persistentDataPath + "/Saves/save_" + slot + ".gd";
+		string saveNames = Application.persistentDataPath + "/Saves/save_" + slot + ".gd"; //Application.persistentDataPath points to the default storage location of whichever OS is in use
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream loadedFile = File.Open(saveNames, FileMode.OpenOrCreate);
 		LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(loadedFile);

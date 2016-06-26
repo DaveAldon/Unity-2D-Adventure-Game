@@ -7,9 +7,9 @@ public class CheckpointManager : MonoBehaviour {
 	public static CheckpointManager Instance;
 	public static bool showCheckpoints = false;
 	public List<int> unlockedCheckpoints = new List<int>();
-	public CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate();
+	public CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate(); //New class deriving from the base CheckpointCoordinate class which holds only x, y, and z floats
 
-	public static string getCheckpointName(int checkpointID) {
+	public static string getCheckpointName(int checkpointID) { //Recieves a CheckpointID and returns a string depending on what the checkpoint's name needs to be
 		if (checkpointID == 0) {
 			return "Start Position";
 		} else if (checkpointID == 1) {
@@ -17,7 +17,7 @@ public class CheckpointManager : MonoBehaviour {
 		} else if (checkpointID == 2) {
 			return "East Checkpoint";
 		} else
-			return "Incorrect Checkpoint ID";
+			return "Incorrect Checkpoint ID"; //This is for if the checkpointID essentially doesn't correspond with an existing checkpoint. During development we would like to know if something is strange
 	}
 
 	public static CheckpointCoordinate getCheckpointCoordinates(int checkpointID) {
@@ -34,7 +34,7 @@ public class CheckpointManager : MonoBehaviour {
 			CheckpointManager.Instance.checkpointCoordinates.y = -10;
 			CheckpointManager.Instance.checkpointCoordinates.z = 0;
 		}
-		return CheckpointManager.Instance.checkpointCoordinates;
+		return CheckpointManager.Instance.checkpointCoordinates; //Because there are multiples values we need returned, everything is placed in a class, and the entire class is returned
 	}
 
 	public static int getUnlockedCheckpoints(int checkpointID) {

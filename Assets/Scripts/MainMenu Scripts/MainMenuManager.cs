@@ -140,7 +140,6 @@ public class MainMenuManager : MonoBehaviour {
 			if(GUILayout.Button("Cancel")) {
 				currentMenu = Menu.MainMenu;
 			}
-				//GlobalController.Instance.NewSave (newGameStartScene, newPlayerName, newGameStartPosX, newGameStartPosY, newGameStartPosZ);
 		}
 
 		if (showNewGameSaveSlot == true) {

@@ -8,37 +8,37 @@ public class SpriteCharacterController : MonoBehaviour {
 	bool facingForward = true;
 	public float playerSpeed = 10f;
 	public static SpriteCharacterController Instance;
-	public CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate();
+	public CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate(); //New class deriving from the base CheckpointCoordinate class which holds only x, y, and z floats
 
 	void Start() {
-		if (GlobalController.Instance.IsSceneBeingLoaded) {
-			PlayerState.Instance.localPlayerData = GlobalController.Instance.LocalCopyOfData;
-			transform.position = new Vector3(
+		if (GlobalController.Instance.IsSceneBeingLoaded) { //If the scene is being loaded via a saved game file
+			PlayerState.Instance.localPlayerData = GlobalController.Instance.LocalCopyOfData; //Passes saved data to the player
+			transform.position = new Vector3( //Updates the player location based on the saved data
 				GlobalController.Instance.LocalCopyOfData.PositionX,
 				GlobalController.Instance.LocalCopyOfData.PositionY,
 				GlobalController.Instance.LocalCopyOfData.PositionZ
 			);
 
-			GlobalController.Instance.IsSceneBeingLoaded = false;
+			GlobalController.Instance.IsSceneBeingLoaded = false; //Turns the bool off in case the player loads their game during the same application session
 		}
 
-		if (GlobalController.Instance.IsCheckpointBeingActivated) {
-			checkpointCoordinates = CheckpointManager.getCheckpointCoordinates(GlobalController.Instance.whatCheckpointIsLoading);
+		if (GlobalController.Instance.IsCheckpointBeingActivated) { //If the scene is being loaded via a checkpoint
+			checkpointCoordinates = CheckpointManager.getCheckpointCoordinates(GlobalController.Instance.whatCheckpointIsLoading); //Sets the x,y, and z values equal to the appropriate floats once the checkpoint's ID is given to the coordinate retriever function
 			transform.position = new Vector3(
 				checkpointCoordinates.x,
 				checkpointCoordinates.y,
 				checkpointCoordinates.z
 			);
 
-			GlobalController.Instance.IsCheckpointBeingActivated = false;
+			GlobalController.Instance.IsCheckpointBeingActivated = false; //Turns the bool off in case the player loads different checkpoints during the same game. Because of the nature of the game, this will probably happen often in order to travel
 		}
 	}
 
 	void FixedUpdate () {
-		Controls (); // Player Movement
+		Controls (); //Activates the Controls function that checks for keyboard input every frame. We will keep these functions seperate for ease of maintenance
 	}
 
-	void flip()//flipping the sprite and animation backwards
+	void flip()//Flipping the sprite and animation backwards
 	{
 		facingForward = !facingForward;
 		Vector3 theScale = transform.localScale;
@@ -86,7 +86,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		GlobalController.Instance.Save(slot);
 	}
 
-	void OnGUI() { 
+	void OnGUI() { //These buttons are for use during development in order to easily manipulate the activation of functions
 		if(GUILayout.Button("Save 1")) {
 			save(1);
 			GlobalController.Instance.globalsActiveSave.save = 1;
