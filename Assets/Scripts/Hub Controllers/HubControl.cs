@@ -45,15 +45,5 @@ public class HubControl : MonoBehaviour {
 			}
 		}
 	}
-
-	/*void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes
-		if (Instance == null) {
-			DontDestroyOnLoad(gameObject);
-			Instance = this;
-		}
-		else if (Instance != this) {
-			Destroy (gameObject);
-		}
-	} */
 }
 
