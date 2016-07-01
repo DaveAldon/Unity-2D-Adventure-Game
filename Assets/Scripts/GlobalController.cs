@@ -39,6 +39,8 @@ public class GlobalController : MonoBehaviour {
 		saveFileName = "save_" + slot + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream saveFile = File.Create(Application.persistentDataPath + "/Saves/" + saveFileName);
+		//PlayerState.Instance.unlockedCheckpointList = GlobalController.Instance.unlockedCheckpoints;
+		PlayerState.Instance.localPlayerData.unlockedCheckpointList = GlobalController.Instance.unlockedCheckpoints;
 		LocalCopyOfData = PlayerState.Instance.localPlayerData;
 		formatter.Serialize(saveFile, LocalCopyOfData);
 		saveFile.Close();
@@ -55,6 +57,8 @@ public class GlobalController : MonoBehaviour {
 		PlayerState.Instance.localPlayerData.PositionX = X;
 		PlayerState.Instance.localPlayerData.PositionY = Y;
 		PlayerState.Instance.localPlayerData.PositionZ = Z;
+
+		GlobalController.Instance.unlockedCheckpoints.Clear ();
 
 		saveFileName = "save_" + save + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
@@ -78,6 +82,7 @@ public class GlobalController : MonoBehaviour {
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream loadedFile = File.Open(saveNames, FileMode.OpenOrCreate);
 		LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(loadedFile);
+		GlobalController.Instance.unlockedCheckpoints = PlayerState.Instance.localPlayerData.unlockedCheckpointList;
 		loadedFile.Close();
 		UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 	}
