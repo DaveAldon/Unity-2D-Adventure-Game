@@ -35,7 +35,7 @@ public class IndividualCheckpoint : MonoBehaviour {
 					Debug.Log (GlobalController.Instance.globalsActiveSave.save.ToString ());
 					travelTriggerGUI = true;
 				}
-			} else if (GlobalController.Instance.unlockedCheckpoints.Contains (checkpointID)) {
+			} else if (GlobalController.Instance.unlockedCheckpoints.Contains (checkpointID)) { //Test
 				GUILayout.Label ("Unlocked");
 				travelTriggerGUI = true;
 			}
