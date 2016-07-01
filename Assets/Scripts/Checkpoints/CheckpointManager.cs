@@ -6,7 +6,6 @@ public class CheckpointManager : MonoBehaviour {
 
 	public static CheckpointManager Instance;
 	public static bool showCheckpoints = false;
-	public List<int> unlockedCheckpoints = new List<int>();
 	public CheckpointCoordinate checkpointCoordinates = new CheckpointCoordinate(); //New class deriving from the base CheckpointCoordinate class which holds only x, y, and z floats
 
 	public static string getCheckpointName(int checkpointID) { //Recieves a CheckpointID and returns a string depending on what the checkpoint's name needs to be
@@ -38,7 +37,7 @@ public class CheckpointManager : MonoBehaviour {
 	}
 
 	public static int getUnlockedCheckpoints(int checkpointID) {
-		return CheckpointManager.Instance.unlockedCheckpoints.IndexOf (checkpointID);
+		return GlobalController.Instance.unlockedCheckpoints.IndexOf (checkpointID);
 	}
 
 	void OnGUI() {
@@ -53,7 +52,7 @@ public class CheckpointManager : MonoBehaviour {
 	}
 
 	public void unlockedCheckpoint(int checkpointID) {
-		this.unlockedCheckpoints.Add (checkpointID);
+		GlobalController.Instance.unlockedCheckpoints.Add (checkpointID);
 	}
 
 	void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes

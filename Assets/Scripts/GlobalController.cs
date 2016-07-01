@@ -11,6 +11,8 @@ public class GlobalController : MonoBehaviour {
 	public PlayerStatistics LocalCopyOfData;
 	public ActiveSave globalsActiveSave = new ActiveSave();
 
+	public List<int> unlockedCheckpoints = new List<int>();
+
 	public bool IsSceneBeingLoaded = false;
 	public bool IsCheckpointBeingActivated = false;
 

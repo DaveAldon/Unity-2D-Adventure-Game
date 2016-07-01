@@ -8,11 +8,11 @@ public class HubControl : MonoBehaviour {
 	public bool triggerGUI = false;
 	public string checkpointName = "";
 	public List<int> hubCheckpoints = new List<int> ();
-	public CheckpointCoordinate buttonCoordinates = new CheckpointCoordinate (); //New class deriving from the base CheckpointCoordinate class which holds only x, y, and z floats
+	//public CheckpointCoordinate buttonCoordinates = new CheckpointCoordinate (); //New class deriving from the base CheckpointCoordinate class which holds only x, y, and z floats
 
 	void Start() {
 		transform.position = new Vector3(0,5,0);
-		hubCheckpoints = CheckpointManager.Instance.unlockedCheckpoints; //Assigns the list values from the global controller to the hub controller
+		hubCheckpoints = GlobalController.Instance.unlockedCheckpoints; //Assigns the list values from the global controller to the hub controller
 		GlobalController.Instance.Save (GlobalController.Instance.globalsActiveSave.save);
 		triggerGUI = true;
 	}
@@ -32,7 +32,7 @@ public class HubControl : MonoBehaviour {
 			GUILayout.Space(500);
 			for (int i = 0; i < hubCheckpoints.Count; i++) {
 				if (GUI.Button (new Rect (500, i * 30, 200, 20), CheckpointManager.getCheckpointName(CheckpointManager.getUnlockedCheckpoints(i)))) {
-					buttonCoordinates = CheckpointManager.getCheckpointCoordinates (i);
+					CheckpointManager.Instance.checkpointCoordinates = CheckpointManager.getCheckpointCoordinates (i);
 					GlobalController.Instance.whatCheckpointIsLoading = i; //Sets a global number that is used by the SpriteCharacterController in order to manage checkpoint coordinate loading
 					GlobalController.Instance.IsCheckpointBeingActivated = true; //SpriteCharacterController checks if this is true on start in order to activate checkpoint coordinate functions
 					UnityEngine.SceneManagement.SceneManager.LoadScene("1");

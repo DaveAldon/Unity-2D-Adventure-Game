@@ -29,9 +29,14 @@ public class IndividualCheckpoint : MonoBehaviour {
 	void OnGUI() {
 		if(triggerCheckpointGUI) {
 			GUILayout.Space(500);
-			if (GUILayout.Button ("Click to Save Checkpoint")) {
-				CheckpointManager.Instance.unlockedCheckpoint (checkpointID);
-				Debug.Log(GlobalController.Instance.globalsActiveSave.save.ToString());
+			if (!GlobalController.Instance.unlockedCheckpoints.Contains (checkpointID)) {
+				if (GUILayout.Button ("Click to Save Checkpoint")) {				
+					CheckpointManager.Instance.unlockedCheckpoint (checkpointID);
+					Debug.Log (GlobalController.Instance.globalsActiveSave.save.ToString ());
+					travelTriggerGUI = true;
+				}
+			} else if (GlobalController.Instance.unlockedCheckpoints.Contains (checkpointID)) {
+				GUILayout.Label ("Unlocked");
 				travelTriggerGUI = true;
 			}
 			if(travelTriggerGUI) {

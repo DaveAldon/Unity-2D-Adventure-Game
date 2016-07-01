@@ -82,7 +82,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
 		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
 		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
-		PlayerState.Instance.localPlayerData.unlockedCheckpointList = CheckpointManager.Instance.unlockedCheckpoints;
+		PlayerState.Instance.localPlayerData.unlockedCheckpointList = GlobalController.Instance.unlockedCheckpoints;
 		GlobalController.Instance.Save(slot);
 	}
 
