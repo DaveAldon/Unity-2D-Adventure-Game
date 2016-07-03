@@ -31,6 +31,10 @@ public class GlobalController : MonoBehaviour {
 		whatSaveFileIsActive = GlobalController.Instance.globalsActiveSave.save;
 	}
 
+	public void sortCheckpointUnlocks() {
+		unlockedCheckpoints.Sort ();
+	}
+
 	public void Save(int slot) { //note that Application.persistentDataPath is the default path location of save files for Unity3d. Calling on this allows this code to be multiplatform without worrying about special paths
 		if (!Directory.Exists(Application.persistentDataPath + "/Saves")) {
 			Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
@@ -39,8 +43,6 @@ public class GlobalController : MonoBehaviour {
 		saveFileName = "save_" + slot + ".gd";
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream saveFile = File.Create(Application.persistentDataPath + "/Saves/" + saveFileName);
-		//PlayerState.Instance.unlockedCheckpointList = GlobalController.Instance.unlockedCheckpoints;
-		//PlayerState.Instance.localPlayerData.unlockedCheckpointList = GlobalController.Instance.unlockedCheckpoints;
 		LocalCopyOfData = PlayerState.Instance.localPlayerData;
 		formatter.Serialize(saveFile, LocalCopyOfData);
 		saveFile.Close();
@@ -82,7 +84,6 @@ public class GlobalController : MonoBehaviour {
 		BinaryFormatter formatter = new BinaryFormatter();
 		FileStream loadedFile = File.Open(saveNames, FileMode.OpenOrCreate);
 		LocalCopyOfData = (PlayerStatistics)formatter.Deserialize(loadedFile);
-		//GlobalController.Instance.unlockedCheckpoints = PlayerState.Instance.localPlayerData.unlockedCheckpointList;
 		loadedFile.Close();
 		UnityEngine.SceneManagement.SceneManager.LoadScene("1");
 	}

@@ -8,7 +8,6 @@ public class HubControl : MonoBehaviour {
 	public bool triggerGUI = false;
 	public string checkpointName = "";
 	public List<int> hubCheckpoints = new List<int> ();
-	//public CheckpointCoordinate buttonCoordinates = new CheckpointCoordinate (); //New class deriving from the base CheckpointCoordinate class which holds only x, y, and z floats
 
 	void Start() {
 		transform.position = new Vector3(0,5,0);

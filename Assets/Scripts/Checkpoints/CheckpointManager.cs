@@ -53,6 +53,7 @@ public class CheckpointManager : MonoBehaviour {
 
 	public void unlockedCheckpoint(int checkpointID) {
 		GlobalController.Instance.unlockedCheckpoints.Add (checkpointID);
+		GlobalController.Instance.sortCheckpointUnlocks ();
 	}
 
 	void Awake () { //This singleton keeps the object this script is attached to from being destroyed when switching scenes
