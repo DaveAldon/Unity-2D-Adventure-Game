@@ -19,6 +19,7 @@ public class SpriteCharacterController : MonoBehaviour {
 				GlobalController.Instance.LocalCopyOfData.PositionZ
 			);
 
+			GlobalController.Instance.unlockedCheckpoints = PlayerState.Instance.localPlayerData.unlockedCheckpoints;
 			GlobalController.Instance.IsSceneBeingLoaded = false; //Turns the bool off in case the player loads their game during the same application session
 		}
 
@@ -82,7 +83,7 @@ public class SpriteCharacterController : MonoBehaviour {
 		PlayerState.Instance.localPlayerData.PositionX = transform.position.x;
 		PlayerState.Instance.localPlayerData.PositionY = transform.position.y;
 		PlayerState.Instance.localPlayerData.PositionZ = transform.position.z;
-		PlayerState.Instance.localPlayerData.unlockedCheckpointList = GlobalController.Instance.unlockedCheckpoints;
+		PlayerState.Instance.localPlayerData.unlockedCheckpoints = GlobalController.Instance.unlockedCheckpoints;
 		GlobalController.Instance.Save(slot);
 	}
 

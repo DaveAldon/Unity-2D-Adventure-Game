@@ -227,10 +227,43 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-    m_RemovedComponents: []
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    m_RemovedComponents:
+    - {fileID: 114000013602530510, guid: 67ca0240820462d47bed7613385ee1d6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 67ca0240820462d47bed7613385ee1d6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &779815401 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011262861424, guid: 67ca0240820462d47bed7613385ee1d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 745779866}
+--- !u!114 &779815402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 779815401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b5c8fed0ba3a14996c85d04717c027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneID: 0
+  playerPosition: {fileID: 1752618556}
+  PositionX: 0
+  PositionY: 0
+  PositionZ: 0
+  HP: 0
+  characterName: 
+  unlockedCheckpoints: 
+  localPlayerData:
+    SceneID: 0
+    PositionX: 0
+    PositionY: 0
+    PositionZ: 0
+    HP: 0
+    characterName: 
+    unlockedCheckpointList: 
 --- !u!1001 &1084725919
 Prefab:
   m_ObjectHideFlags: 0
@@ -283,7 +316,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f9c3ecf808d2644eb85575dee3c9564, type: 2}
   m_IsPrefabParent: 0
@@ -381,7 +414,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f9c3ecf808d2644eb85575dee3c9564, type: 2}
   m_IsPrefabParent: 0
@@ -419,7 +452,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}

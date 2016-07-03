@@ -9,5 +9,5 @@ public class PlayerStatistics {
 	public float PositionX, PositionY, PositionZ;
 	public float HP;
 	public string characterName;
-	public List<int> unlockedCheckpointList = new List<int>();
+	public List<int> unlockedCheckpoints = new List<int>();
 }

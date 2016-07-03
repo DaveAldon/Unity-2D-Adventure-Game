@@ -42,7 +42,7 @@ public class CheckpointManager : MonoBehaviour {
 
 	void OnGUI() {
 		if (showCheckpoints) {
-			if(0 < GlobalController.Instance.savedPlayerData.unlockedCheckpointList.Count) {
+			if(0 < GlobalController.Instance.savedPlayerData.unlockedCheckpoints.Count) {
 				GUILayout.TextArea (getUnlockedCheckpoints(1).ToString() + getCheckpointName(1));
 			}
 			else {

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class Character {
 
 	public string characterName;
-	public int[] unlockedLocations; //3 available checkpoints to unlock
 
 	public Character () {
 		this.characterName = "";
