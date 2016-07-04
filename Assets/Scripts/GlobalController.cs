@@ -33,6 +33,16 @@ public class GlobalController : MonoBehaviour {
 
 	public void sortCheckpointUnlocks() {
 		unlockedCheckpoints.Sort ();
+
+		int index = 0;
+		while (index < unlockedCheckpoints.Count - 1) //Removes duplicates in the unlocked checkpoint list
+		{
+			if (unlockedCheckpoints [index] == unlockedCheckpoints [index + 1]) {
+				unlockedCheckpoints.RemoveAt (index);
+			}
+			else
+				index++;
+		}
 	}
 
 	public void Save(int slot) { //note that Application.persistentDataPath is the default path location of save files for Unity3d. Calling on this allows this code to be multiplatform without worrying about special paths
