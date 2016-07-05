@@ -16,7 +16,7 @@ public class CheckpointManager : MonoBehaviour {
 		} else if (checkpointID == 2) {
 			return "East Checkpoint";
 		} else
-			return "Incorrect Checkpoint ID"; //This is for if the checkpointID essentially doesn't correspond with an existing checkpoint. During development we would like to know if something is strange
+			return "Incorrect Checkpoint ID " + checkpointID; //This is for if the checkpointID essentially doesn't correspond with an existing checkpoint. During development we would like to know if something is strange
 	}
 
 	public static CheckpointCoordinate getCheckpointCoordinates(int checkpointID) {
@@ -37,13 +37,12 @@ public class CheckpointManager : MonoBehaviour {
 	}
 
 	public static int getUnlockedCheckpoints(int checkpointID) {
-		return GlobalController.Instance.unlockedCheckpoints.IndexOf (checkpointID);
+			return GlobalController.Instance.unlockedCheckpoints[checkpointID];
 	}
 
 	void OnGUI() {
 		if (showCheckpoints) {
 			if(0 < GlobalController.Instance.savedPlayerData.unlockedCheckpoints.Count) {
-				GUILayout.TextArea (getUnlockedCheckpoints(1).ToString() + getCheckpointName(1));
 			}
 			else {
 				GUILayout.TextArea("Nothing in list");
