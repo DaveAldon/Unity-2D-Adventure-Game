@@ -2,29 +2,35 @@
 using System.Collections;
 
 public class WeatherSpawner : MonoBehaviour {
-		// these values hold grid coordinates for each corner of the room
-	public int x1;
-	public int x2;
-	public int y1;
-	public int y2;
+	public float low = -10.0f;
+	public float high = 10.0f;
+	public float low2 = -10.0f;
+	public float high2 = 10.0f;
+			
+	public GameObject leader;
+	public GameObject follower;
+	//public Vector3[] pubPositions = new Vector3[10];
 
-		// width and height of room in terms of grid
-	public int w;
-	public int h;
+	void Start() {
+		generateFollowers();
+	}
 
-		// center point of the room
-	public Vector3 center;
+	public void generateLeader() {
+		Random.InitState (1);
+		Vector3 eyeOfStormPos = new Vector3(Random.Range (low, high), Random.Range (low2, high2), 0);
+		Instantiate(leader, eyeOfStormPos, Quaternion.identity);
+		}
 
-		// constructor for creating new rooms
-	public WeatherSpawner(int x, int y, int w, int h) {
-			x1 = x;
-			x2 = x + w;
-			y1 = y;
-			y2 = y + h;
-			//this.x = x * Main.TILE_WIDTH;
-			//this.y = y * Main.TILE_HEIGHT;
-			this.w = w;
-			this.h = h;
-			//center = new Point(Math.floor((x1 + x2) / 2),Math.floor((y1 + y2) / 2));
+	public void generateFollowers() {
+
+		Vector3[] positions = new Vector3[10]; //We need to declare the array in a method and not the class, or the index won't be able to be accessed correctly
+
+		for (int i = 0; i < 9; i++) {
+			positions[i] = new Vector3(Random.Range (low, high), Random.Range (low2, high2), 0);
+		}
+
+		for (int i = 0; i < 10; i++) {
+			Instantiate(follower, positions[i], Quaternion.identity);
+		}
 	}
 }
