@@ -53,9 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 5
-  rotationSpeed: 5
-  myTransform: {fileID: 4000013602020342}
+  speed: 1
 --- !u!212 &212000012688734888
 SpriteRenderer:
   m_ObjectHideFlags: 1
