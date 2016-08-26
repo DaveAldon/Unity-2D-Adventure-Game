@@ -34,7 +34,7 @@ public class WeatherSpawner : MonoBehaviour {
 
 		Vector3[] positions = new Vector3[10]; //We need to declare the array in a method and not the class, or the index won't be able to be accessed correctly
 
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < 10; i++) {
 			positions[i] = new Vector3(Random.Range (lowFollowx, highFollowx), Random.Range (lowFollowy, highFollowy), 0);
 		}
 
